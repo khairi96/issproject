@@ -1,27 +1,29 @@
-<<<<<<< HEAD
 <div style="text-align:center">
-  <canvas id="lineChart"></canvas>
-=======
-<div style="text-align:center" > 
-  <canvas id="lineChart" ></canvas>
- 
-  <button type="button" class="btn btn-info" (click)="adddata()">V Rate</button>
->>>>>>> 5708c38fe73c744f136c818e1b9920d9b8b8e60d
+  <div class="container">
+      <canvas id="lineChart"></canvas>
+    </div>
+  <div style="text-align:center">
+    <h4>Add new dataset to the chart</h4>
+    <mat-form-field>
+      <mat-label>choose type</mat-label>
+      <select matNativeControl required #type>
+        <option value="bar">Bar</option>
+        <option value="line">Line</option>
+      </select>
+    </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>choose data</mat-label>
+      <select matNativeControl required #data>
+        <option *ngFor="let dataset of datasets" [value]="dataset.id">
+          {{ dataset.name }}
+        </option>
+      </select>
+    </mat-form-field>
+    <p> </p>
 
-  <h4>native html select</h4>
-  <mat-form-field>
-    <mat-label>Select dataset </mat-label>
-    <select matNativeControl id="mySelectId">
-      <option value="" disabled selected></option>
-      <option value="bar" #name="ngModel" name="dtype" [(ngModel)]="dstype" type="text">bar</option>
-      <option value="line" #name="ngModel" name="dtype" [(ngModel)]="dstype">line</option>
+    <button mat-raised-button color="primary" (click)="adddata(type.value, data.value)">Add dataset</button>
+    <button type="button" class="btn btn-info" (click)="removedata()">Remove</button>
 
-<<<<<<< HEAD
-    </select>
-  </mat-form-field>
-  <button (ngSubmit)="adddata()">Click me!</button>
+  </div>
 </div>
-=======
-
->>>>>>> 5708c38fe73c744f136c818e1b9920d9b8b8e60d
